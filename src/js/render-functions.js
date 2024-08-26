@@ -8,7 +8,7 @@ let lightbox;
 export function renderGallery(images) {
   const gallery = document.querySelector('.gallery');
 
-  // Генерируем HTML-код для новых изображений
+
   const markup = images.map(image => {
     return `
       <div class="photo-card">
@@ -33,10 +33,10 @@ export function renderGallery(images) {
     `;
   }).join('');
 
-  // Добавляем новый контент к существующему
+  
   gallery.insertAdjacentHTML('beforeend', markup);
 
-  // Инициализируем или обновляем SimpleLightbox для галереи
+  
   if (lightbox) {
     lightbox.refresh();
   } else {

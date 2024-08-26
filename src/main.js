@@ -17,27 +17,27 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    showLoader(); // Показать спиннер
-    resetPage(); // Сброс страницы до начального значения
+    showLoader(); 
+    resetPage(); 
     gallery.innerHTML = '';
-    loadMoreBtn.style.display = 'none'; // Скрываем кнопку перед новым поиском
+    loadMoreBtn.style.display = 'none'; 
 
     try {
       const data = await fetchImages(query);
-      hideLoader(); // Скрыть спиннер
+      hideLoader(); 
 
       if (data.totalHits > 0) {
         renderGallery(data.hits);
 
-        // Определяем общее количество страниц
+        
         totalPages = Math.ceil(data.totalHits / perPage);
 
-        // Корректируем totalPages, если totalHits кратно perPage
+        
         if (data.totalHits % perPage === 0) {
           totalPages -= 1;
         }
 
-        // Отображаем кнопку "Load more", если найдено больше изображений, чем на одной странице
+       
         if (totalPages > 1) {
           loadMoreBtn.style.display = 'block';
         }
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showError('Sorry, there are no images matching your search query. Please try again!');
       }
     } catch (error) {
-      hideLoader(); // Скрыть спиннер
+      hideLoader(); 
       showError('An error occurred while fetching images.');
     } finally {
       form.reset();
@@ -56,30 +56,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPage = getCurrentPage();
 
     if (currentPage >= totalPages) {
-      // Если текущая страница уже равна или больше общего количества страниц
+      
       loadMoreBtn.style.display = 'none';
       showError("We're sorry, but you've reached the end of search results.");
       return;
     }
 
-    incrementPage(); // Увеличиваем номер страницы
-    showLoader(); // Показать спиннер
-    loadMoreBtn.style.display = 'none'; // Скрыть кнопку
+    incrementPage(); 
+    showLoader(); 
+    loadMoreBtn.style.display = 'none'; 
 
     try {
       const data = await fetchImages(getCurrentQuery(), currentPage + 1);
-      hideLoader(); // Скрыть спиннер
+      hideLoader(); 
       renderGallery(data.hits);
 
       if (currentPage + 1 >= totalPages) {
         loadMoreBtn.style.display = 'none';
         showError("We're sorry, but you've reached the end of search results.");
       } else {
-        loadMoreBtn.style.display = 'block'; // Показать кнопку для загрузки следующей страницы
+        loadMoreBtn.style.display = 'block'; 
       }
     } catch (error) {
-      hideLoader(); // Скрыть спиннер
-      loadMoreBtn.style.display = 'block'; // Вернуть кнопку в случае ошибки
+      hideLoader(); 
+      loadMoreBtn.style.display = 'block'; 
       showError('An error occurred while fetching more images.');
     }
   });
