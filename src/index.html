@@ -2,22 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HW8</title>
+    <title>Search App</title>
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-
   <body>
-    <form class="search-form">
-      <input type="text" name="search" placeholder="Search images..." />
-      <button type="submit">Search</button>
-    </form>
+    <header>
+      <h1>Search App</h1>
+      <form id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          placeholder="Search images..."
+          autocomplete="off"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </header>
 
-    <span class="loader"></span>
-    <ul class="gallery"></ul>
-    <button class="load-more" style="display: none">Load More</button>
+    <main>
+      <div class="gallery"></div>
+      <div class="load-more-container">
+        <div id="loader" class="loader hidden">
+          <div class="lds-dual-ring"></div>
+        </div>
+        <button class="load-more hidden">Load more</button>
+      </div>
+    </main>
 
-    <script src="./main.js" type="module"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
