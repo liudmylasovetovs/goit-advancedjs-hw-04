@@ -58,3 +58,10 @@ export function showError(message) {
     message: message,
   });
 }
+
+export function showInfo(message) {
+  iziToast.info({
+    title: 'Info',
+    message: message,
+  });
+}

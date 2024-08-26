@@ -5,7 +5,7 @@ const BASE_URL = 'https://pixabay.com/api/';
 
 let currentPage = 1;
 let currentQuery = '';
-export const perPage = 200;
+export const perPage = 15;
 
 export async function fetchImages(query, page = 1) {
   if (query !== currentQuery) {
